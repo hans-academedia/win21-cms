@@ -1,0 +1,70 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="UMBRACO - CMS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://kit.fontawesome.com/41c8b474e2.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+    <title>@ViewData["Title"] - UMBRACO</title>
+</head>
+<body>
+    <header class="__gradinent-gray">
+        <nav class="__navbar container">
+            <div class="__logo">
+                Fixxo.
+            </div>
+            <div class="__nav-links">
+                <a class="__active" href="index.html">Home</a>
+                <a href="contact.html">Contacts</a>
+            </div>
+            <div class="__nav-icon-links">
+                <a href="#"><i class="fa-regular fa-magnifying-glass"></i></a>
+                <a href="#"><i class="fa-regular fa-repeat"></i></a>
+                <a href="#"><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-theme">1</span><i class="fa-regular fa-heart"></i></a>
+                <a href="#"><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-theme">3</span><i class="fa-regular fa-bag-shopping"></i></a>
+            </div>
+        </nav>
+
+        <section class="__showcase container">
+            <img src="/images/showcase-img-1.svg" class="__img-left" alt="showcase-img-1">
+            <div class="__showcase-body">
+                <h1>Sale Up</h1>
+                <h1>To 50% Off</h1>
+                <p>Online shopping free home delivery over $100</p>
+                <a class="__btn-theme" href="#">
+                    <span class="__btn-theme-left"></span>  
+                    <span class="__btn-theme-right"></span>
+                    SHOP NOW
+                </a>
+            </div>
+            <img src="/images/showcase-img-2.svg" class="__img-right" alt="showcase-img-2">
+        </section>
+    </header>
+
+    @RenderBody()
+    
+    <footer>
+        <div class="socialmedia">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-google"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <div>© 2022 Fixxo. All Rights Reserved</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>

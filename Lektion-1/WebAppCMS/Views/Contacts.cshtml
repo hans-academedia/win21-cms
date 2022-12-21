@@ -1,0 +1,54 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Contacts>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    ViewData["Title"] = @Model.Value("contactTitle");
+	Layout = "_Layout2.cshtml";
+}
+
+
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="index.html">Home</a></li>
+                <li>Contacts</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="map">
+        <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17748.17824107927!2d18.02334627175641!3d59.34307167855382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d86c5590a35%3A0xac5dd727a529fe56!2sEC%20Utbildning!5e0!3m2!1ssv!2sse!4v1665524238091!5m2!1ssv!2sse" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section class="contact-form" >
+        <div class="container">
+            <h2>Come in Contact with Us</h2>
+            
+            <p class="my-5">
+                @Model.Value("contactAddressInformation")
+            </p>
+            
+            <form onsubmit="submitForm(event)" novalidate>
+                <div>
+                    <input id="name" type="text" onkeyup="validate(event)" placeholder="Your Name">
+                    <div id="nameErrorMessage" class="errorMessage"></div>
+                </div>
+                <div>
+                    <input id="email" type="email" onkeyup="validate(event)" placeholder="Your Mail">
+                    <div id="emailErrorMessage" class="errorMessage"></div>
+                </div>
+                
+                <div class="textarea">
+                    <textarea id="comment" onkeyup="validate(event)" placeholder="Comments"></textarea>
+                    <div id="commentErrorMessage" class="errorMessage"></div>
+                </div>
+                <div>
+                    <button type="submit" class="btn-theme">
+                        <span class="corner-topLeft"></span>
+                        <span class="corner-bottomRight"></span>
+                        Post Comments
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
