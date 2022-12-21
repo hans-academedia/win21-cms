@@ -1,5 +1,10 @@
 Öppna terminalen i valfri katalog och ange sedan följande kommandon:
 
+Detta ska du bara göra en gång på en ny dator
+dotnet new install Umbraco.Templates
+
+
+Detta ska du göra varje gång du vill skapa ett nytt projekt
 dotnet new umbraco -n YourProjectName
 dotnet new sln -n YourSolutionName
 dotnet sln add YourProjectName
