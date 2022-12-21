@@ -1,0 +1,9 @@
+Öppna terminalen i valfri katalog och ange sedan följande kommandon:
+
+dotnet new umbraco -n YourProjectName
+dotnet new sln -n YourSolutionName
+dotnet sln add YourProjectName
+
+cd YourProjectName
+dotnet build
+dotnet run

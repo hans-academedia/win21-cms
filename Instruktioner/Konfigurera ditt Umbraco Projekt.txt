@@ -1,0 +1,7 @@
+Öppna upp terminalen i katalogen där du har ditt projekt (.proj) och skriv sedan följande:
+
+dotnet run
+
+
+Tryck sedan på den url som visas i terminalen (du kan behöva trycka ner ctrl samtidigt som du klickar på länken).
+Vid första gången så får du konfigurera din installation. Gör detta genom att följa de anvisningar som visas.
