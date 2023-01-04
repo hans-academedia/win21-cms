@@ -1,0 +1,15 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Layout.cshtml";
+	ViewData["Title"] = @Model.Value("pageTitle");
+}
+
+<div class="bg-info text-white py-5">
+    @Model.Value("pageIngress")
+</div>
+
+<div class="container">
+    @Model.Value("pageBody")
+</div>

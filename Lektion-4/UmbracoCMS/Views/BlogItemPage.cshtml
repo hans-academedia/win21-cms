@@ -1,0 +1,53 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogItemPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Layout.cshtml";
+	ViewData["PageTitle"] = @Model.Value("blogTitle");
+	ViewData["PageDescription"] = @Model.Value("blogIngress");
+}
+
+<partial name="_Breadcrumb" />
+
+<div class="container mb-5">
+    <div class="">
+        <div class="row">
+
+            <div class="col-8">
+                <p><small>@(Model.Value<DateTime>("blogPublishedDate").ToString("dd MMMM, yyyy")) </small></p>
+                <h1 class="mb-3">@Model.Value("blogTitle")</h1>
+
+                @if (Model.BlogTags.Any()) 
+                {
+                    <span class="me-2">Tags: </span>
+                    @foreach (var tag in Model.BlogTags) 
+                    {
+                        <span class="badge bg-secondary">@tag</span>
+                    }
+                }
+                
+                <p class="my-5">@Model.Value("blogText")</p>
+            </div>
+            <div class="col-3 offset-1">
+                <h6>Blog Categories</h6>
+                <hr>
+                <ul class="mb-5">
+                    <li>Accessories</li>
+                    <li>Watch Fashion</li>
+                    <li>Pants & Denim</li>
+                </ul>
+                <h6>Recent Posts</h6>
+                <hr>
+                <ul class="mb-5">
+                    <li>Accessories</li>
+                    <li>Watch Fashion</li>
+                    <li>Pants & Denim</li>
+                </ul>
+            </div>
+        </div>  
+        <div class="row">
+
+        </div>
+    </div>
+    
+</div>

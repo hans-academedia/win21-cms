@@ -1,0 +1,86 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogListPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
+@{
+	Layout = "Layout.cshtml";
+}
+
+<partial name="_Breadcrumb" />
+
+<div class="featured-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @{
+                    var featuredBlog = Model.Value<IPublishedContent>("featuredBlog");
+                    if (featuredBlog != null) 
+                    {
+                        
+                        <a href="@featuredBlog.Url()">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            @{ 
+                                                IPublishedContent featuredBlogImage = featuredBlog.Value<IPublishedContent>("blogTumbnailImage"); 
+                                            }
+                                            <img src="@featuredBlogImage.Url()" class="blog-image">
+                                        </div>
+                                        
+                                        <div class="col-7">
+                                        
+                                            <p class="mt-2"><small>@(featuredBlog.Value<DateTime>("blogPublishedDate").ToString("dd MMMM, yyyy")) </small></p>
+                                            <h1>@featuredBlog.Value("blogTitle")</h1>
+                                            <p>@featuredBlog.Value("blogIngress")</p>
+                                            
+                                        </div>
+                                    </div> 
+                                </div>                           
+                            </div>
+                        </a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="latest-blogs my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Latest Blogs</h1>
+                <hr>
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    
+                    
+                    @{
+                    	var selection = Umbraco.Content(Guid.Parse("927a8248-8735-4c3b-8599-ecc87209980a"))
+                            .ChildrenOfType("blogItemPage")
+                            .Where(x => x.IsVisible())
+                            .OrderByDescending(x => x.CreateDate);
+
+                    }
+                	@foreach (var item in selection)
+                	{
+                	    var thumbnailImage = item.Value<IPublishedContent>("blogTumbnailImage");
+                	
+                        <div class="col">
+                            <a href="@item.Url()">
+                                <div class="card h-100">
+                                    <img src="@thumbnailImage.Url()"  alt="...">
+                                    <div class="card-body">
+                                        <p><small>@(item.Value<DateTime>("blogPublishedDate").ToString("dd MMMM, yyyy"))</small></p>
+                                        <h5 class="card-title">@item.Name()</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                	}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

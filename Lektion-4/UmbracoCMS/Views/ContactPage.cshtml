@@ -1,0 +1,40 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Layout.cshtml";
+}
+
+<partial name="_Breadcrumb" />
+
+<div class="contact-us">
+    <div class="google-maps">
+        <iframe src="@Model.Value("googleMapsUrl")" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    
+    <section class="contact-form">
+        <div class="container">            
+            <div class="content text-center">
+                <h2>@Model.Value("pageTitle")</h2>
+                @Model.Value("contactPageBody")
+            </div>
+            <form noValidate>
+                <div>
+                    <input id="name" type="text" placeholder="Your Name" />
+                    <div class="errorMessage"></div>
+                </div>
+                <div>
+                    <input id="email" type="email" placeholder="Your Mail" />
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="textarea">
+                    <textarea id="comments" placeholder="Comments"></textarea>
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="formBtn">
+                    <button type="submit" class="btn btn-theme">Post Comments</button>
+                </div>
+            </form>    
+        </div>
+    </section>
+</div>

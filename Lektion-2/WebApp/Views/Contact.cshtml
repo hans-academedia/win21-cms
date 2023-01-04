@@ -1,0 +1,7 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Contact>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "_MainLayout.cshtml";
+	ViewData["Title"] = @Model.Value("contactTitle");
+}

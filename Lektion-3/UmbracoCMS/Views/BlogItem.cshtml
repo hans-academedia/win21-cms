@@ -1,0 +1,14 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Layout.cshtml";
+	ViewData["Title"] = @Model.Value("blogItemTitle");
+}
+
+<div class="container">
+    <h1 class="mb-5">
+        @Model.Value("blogItemTitle")
+    </h1>
+    @Model.Value("blogItemBody")
+</div>

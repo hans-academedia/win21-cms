@@ -1,0 +1,36 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogArticle>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "_MainLayout.cshtml";
+	ViewData["Title"] = @Model.Value("blogTitle");
+}
+
+
+<div class="blog-article container">
+    <div>
+        breadcrumb
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+            <div>
+                @Model.Value("blogImage")
+            </div>
+            <div>
+                <span class="me-3">@Model.Value("writerName")</span>
+                <span>@Model.Value("createDate")</span>
+            </div>
+            <div class="blog-title">
+                @Model.Value("blogTitle")
+            </div>
+            <div class="blog-content">
+                @Model.Value("blogBody")
+            </div>
+        </div>
+        <div class="col-4">
+            side nav
+        </div>
+    </div>
+    
+</div>

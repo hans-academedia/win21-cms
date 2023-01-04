@@ -1,0 +1,14 @@
+#menu-section {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+}
+
+#showcase-section {
+    background-color: lightgray;
+    height: 500px;
+    padding-top: 60px;
+}
+
