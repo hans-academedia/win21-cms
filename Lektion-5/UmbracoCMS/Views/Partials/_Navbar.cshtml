@@ -1,0 +1,40 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Extensions
+
+@inject IPublishedValueFallback PublishedValueFallback
+@inject IPublishedUrlProvider PublishedUrlProvider
+
+@{ 
+    var site = Model.Root();
+    var selection = site.Children.Where(x => x.IsVisible(PublishedValueFallback)).OrderByDescending(x => x.CreateDate).ToArray(); 
+}
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="@site.Url()">Fixxo.</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link @(Model.Id == site.Id ? "active" : null)" href="@site.Url()">@site.Name</a></li>
+                @if (selection?.Length > 0)
+                {
+                    @foreach (var item in selection)
+                    {
+                    <li class="nav-item"><a class="nav-link @(item.IsAncestorOrSelf(Model) ? "active" : null)" href="@item.Url(PublishedUrlProvider)">@item.Name</a></li>
+                    }
+                }
+            </ul>
+            <ul class="navbar-shopping">
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-search"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-code-compare"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-heart"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

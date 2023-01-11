@@ -1,0 +1,10 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomeView>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "_Layout.cshtml";
+	ViewData["PageTitle"] = Model.Value("pageTitle");
+	ViewData["PageDescription"] = Model.Value("pageDescription", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString(""));
+	ViewData["PageKeywords"] = Model.Value("pageKeyworks", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString(""));
+}
+
