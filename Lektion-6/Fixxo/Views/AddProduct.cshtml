@@ -1,0 +1,45 @@
+﻿@using Fixxo.Models;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.AddProduct>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Layout.cshtml";
+    ViewData["PageTitle"] = @Model.Value("pageTitle");
+    ViewData["PageDescription"] = @Model.Value("pageDescription");
+
+    foreach (var keyword in @Model.PageKeywords)
+    {
+        ViewData["PageKeywords"] += $"{keyword},";
+    }
+
+    var productModel = new ProductModel();
+}
+
+<form asp-controller="Products" asp-action="Index" method="post" noValidate>
+
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="ModelOnly" class="errorMessage"></div>
+
+    <div>
+        <input asp-for="@productModel.Name" placeholder="ProductName Name" />
+        <div class="errorMessage">
+            <span asp-validation-for="@productModel.Name"></span>
+        </div>
+    </div>
+    <div>
+        <input asp-for="@productModel.Price" placeholder="Product Price" />
+        <div class="errorMessage">
+            <span asp-validation-for="@productModel.Price"></span>
+        </div>
+    </div>
+    <div class="textarea">
+        <textarea asp-for="@productModel.Description" placeholder="Description"></textarea>
+        <div class="errorMessage">
+            <span asp-validation-for="@productModel.Description"></span>
+        </div>
+    </div>
+    <div class="formBtn">
+        <button type="submit" class="btn btn-theme">Add Product</button>
+    </div>
+</form>
